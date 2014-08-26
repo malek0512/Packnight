@@ -1,0 +1,33 @@
+Etat 1
+Transition
+    ETATSUIVANT = 1
+    ENTREE = VUE
+    SORTIE = SUIVRE
+    
+Transition
+	ETATSUIVANT = 1
+	ENTREE = PAS_VUE
+	SORTIE = RIEN
+
+Etat 2
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = AVANCER
+
+Etat 3
+Transition
+    ETATSUIVANT = 3
+    ENTREE = CASE_NON_ATTEINTE
+    SORTIE = AVANCER
+
+Transition
+    ETATSUIVANT = 1
+    ENTREE = CASE_ATTEINTE
+    SORTIE = SUIVRE
+
+        
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1
+AUTOMATE = alex

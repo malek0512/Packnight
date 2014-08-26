@@ -1,0 +1,26 @@
+<?xml version = "1.0" ?>
+<Automate ID= "fm_lord" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "PM_DANS_RAYON_X" Etat= "2" Action = "OBEIR" > </Transition> 
+ <Transition Entree= "NON_PM_DANS_RAYON_X" Etat= "3" Action = "AVANCER" > </Transition> 
+</Etat> 
+<Etat Nom= "2" > 
+ <Transition Entree= "ETOILE" Etat= "1" Action = "DIRECTION_ALEATOIRE" > </Transition> 
+</Etat> 
+<Etat Nom= "3" > 
+ <Transition Entree= "CASE_NON_ATTEINTE" Etat= "3" Action = "AVANCER" > </Transition> 
+ <Transition Entree= "CASE_ATTEINTE" Etat= "2" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+<Etat Nom= "3" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

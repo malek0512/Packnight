@@ -1,0 +1,68 @@
+Etat 1
+Transition
+	ETATSUIVANT = 1
+    ENTREE = CASE_NON_ATTEINTE
+    SORTIE = AVANCER
+
+Transition
+	ETATSUIVANT = 2
+    ENTREE = CASE_ATTEINTE
+    SORTIE = RIEN
+    
+Etat 2
+Transition
+    ETATSUIVANT = 3
+    ENTREE = NON_PM_DANS_CROIX
+    SORTIE = RIEN	
+
+Transition
+    ETATSUIVANT = 4
+    ENTREE = PM_DANS_CROIX
+    SORTIE = AVANCER
+
+
+Etat 3
+Transition
+    ETATSUIVANT = 7
+    ENTREE = INTERSECTION
+    SORTIE = DIRECTION_ALEATOIRE	
+
+Transition
+    ETATSUIVANT = 7
+    ENTREE = NON_INTERSECTION
+    SORTIE = DIRECTION_ALEATOIRE
+        
+Etat 4
+Transition
+    ETATSUIVANT = 5
+    ENTREE = CASE_OCCUPEE
+    SORTIE = DIRECTION_ALEATOIRE
+    
+Transition
+    ETATSUIVANT = 6
+    ENTREE = CASE_LIBRE
+    SORTIE = AVANCER
+
+Etat 5
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = STUN
+    
+Etat 6
+Transition
+    ETATSUIVANT = 4
+    ENTREE = ETOILE
+    SORTIE = AVANCER
+
+Etat 7
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = AVANCER
+ 
+       
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1 5 6
+AUTOMATE = fm_berserk

@@ -1,0 +1,40 @@
+<?xml version = "1.0" ?>
+<Automate ID= "princesse" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "FM_DANS_RAYON" Etat= "2" Action = "AU_SECOURS" > </Transition> 
+ <Transition Entree= "NON_FM_DANS_RAYON" Etat= "7" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat Nom= "2" > 
+ <Transition Entree= "ETOILE" Etat= "3" Action = "FUIR" > </Transition> 
+</Etat> 
+<Etat Nom= "3" > 
+ <Transition Entree= "EN_DANGER" Etat= "4" Action = "AU_SECOURS" > </Transition> 
+ <Transition Entree= "EN_SECURITE" Etat= "5" Action = "FUIR" > </Transition> 
+</Etat> 
+<Etat Nom= "4" > 
+ <Transition Entree= "ETOILE" Etat= "3" Action = "FUIR" > </Transition> 
+</Etat> 
+<Etat Nom= "5" > 
+ <Transition Entree= "FM_DANS_RAYON" Etat= "3" Action = "RIEN" > </Transition> 
+ <Transition Entree= "NON_FM_DANS_RAYON" Etat= "1" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat Nom= "7" > 
+ <Transition Entree= "NE_POSSEDE_PAS_UN_GARDE" Etat= "8" Action = "APPEL_PATROUILLEUR" > </Transition> 
+ <Transition Entree= "POSSEDE_UN_GARDE" Etat= "8" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat Nom= "8" > 
+ <Transition Entree= "ETOILE" Etat= "1" Action = "AVANCER_VERS_PACGUM" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+<Etat Nom= "3" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

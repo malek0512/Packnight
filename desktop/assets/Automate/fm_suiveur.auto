@@ -1,0 +1,23 @@
+Etat 1
+Transition
+    ETATSUIVANT = 1
+    ENTREE = VU
+    SORTIE = SUIVRE
+    
+Transition
+	ETATSUIVANT = 2
+	ENTREE = PAS_VU
+	SORTIE = DIRECTION_ALEATOIRE
+
+Etat 2
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = AVANCER
+
+
+        
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1
+AUTOMATE = fm_suiveur

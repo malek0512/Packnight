@@ -1,0 +1,16 @@
+<?xml version = "1.0" ?>
+<Automate ID= "fm_ramasseur_pacgum" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "ETOILE" Etat= "1" Action = "RAMASSER_PACGUM" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

@@ -1,0 +1,10 @@
+Etat 1
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = FUIR
+        
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1 
+AUTOMATE = pa_fuit

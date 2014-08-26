@@ -1,0 +1,21 @@
+<?xml version = "1.0" ?>
+<Automate ID= "pa_en_detresse" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "FM_DANS_RAYON" Etat= "1" Action = "AU_SECOURS" > </Transition> 
+ <Transition Entree= "NON_FM_DANS_RAYON" Etat= "2" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat Nom= "2" > 
+ <Transition Entree= "NE_POSSEDE_PAS_UN_GARDE" Etat= "1" Action = "APPEL_PATROUILLEUR" > </Transition> 
+ <Transition Entree= "POSSEDE_UN_GARDE" Etat= "1" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

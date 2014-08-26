@@ -1,0 +1,27 @@
+<?xml version = "1.0" ?>
+<Automate ID= "rama" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "ETOILE" Etat= "2" Action = "DIRECTION_ALEATOIRE" > </Transition> 
+</Etat> 
+<Etat Nom= "4" > 
+ <Transition Entree= "ETOILE" Etat= "4" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat Nom= "2" > 
+ <Transition Entree= "VUE" Etat= "4" Action = "OBEIR" > </Transition> 
+ <Transition Entree= "PAS_VUE" Etat= "2" Action = "RIEN" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+<Etat Nom= "2" > 
+</Etat> 
+<Etat Nom= "4" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

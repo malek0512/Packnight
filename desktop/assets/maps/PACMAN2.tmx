@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="28" height="31" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="PACMAN-TERRAIN" tilewidth="32" tileheight="32">
+  <image source="tuiles/PACMAN-TERRAIN.png" width="192" height="124"/>
+ </tileset>
+ <tileset firstgid="19" name="PACMAN-TERRAIN-2" tilewidth="32" tileheight="32">
+  <image source="tuiles/PACMAN-TERRAIN-2.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="37" name="Collision" tilewidth="32" tileheight="32">
+  <image source="tuiles/Collision.png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="62" name="pacgomme" tilewidth="32" tileheight="32">
+  <image source="tuiles/pacgomme.png" width="32" height="32"/>
+ </tileset>
+ <layer name="logic" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA9VSWwrAMAjzMrv/Fcf+9tHMGGPpAkIpJvF1RcSVRJhy3rkZnBro3e2P8UA8VOfqn/H44jEazIzVXf+RtwOVPSj32dm722/Vd9cv02V5CM46XbzpOlfamV4E1jj9PlHPk/M87T5P2IPqx8yHRUWz04eSv8tPgYOr1I7e3XD6Kehy2domZjTtV5mDYy/VWXRynrgBpfcqgZANAAA=
+  </data>
+ </layer>
+ <layer name="GUM" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA9VVQQ7AIAzyZfv/sxZvHtQCxRqbmCyRCqLD1uL6TJgRGw3nGqtvRnvUx/KtdO482HGg3kXaUJ1ovdpXMRSdat3mY/5thiNa183nwGT4kKzM5NlsbSZTVAybSy6+G34qfSd1ruZfOHc0X9k8Rj1X9qHgnf3RPjLvmNqL6q14x5x8N/w85ctYFecw43Pdq1P3M4Pp9QMxZ7HukA0AAA==
+  </data>
+ </layer>
+ <layer name="Background" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA72X627CMAyF003dKOWydkhs7Ars/Z8RI6XCis6JbSb48UlR6iTWiXOSNimlhwoLYSZ0wgvhOcf0xlyPKtbCs55njim2FZ5Ue5WZ+nTu5zwboAEap+fV6/VEO5R7V+lHGi8C45Yg51KX6fs6kCcbh/apK9ootsxzBHrWakvvU1+0PePK9e4B01ODajYaw+pT1zvaM+v86Rh0XqJ1HfEgNi+r96h3sHFl3XvzfBc2wkH4yuxz3y6gizfPQXgTjsJ35k/YCvOALqi2kE8Mal7NQNZD+9QmfG5RfZ7n/cz6aT7Ieqg++4CeP8Ir4TegJzuXt6jPlfrOzi3y3bZo1/a99Anmx+xeHdPFr8fE72Hm515/jfoxw+uvHr/2xF9zz7H3i+de9Gr1H50tPdndxnTz3JE1PS1t2bvO87a4t54RLfS5XgbiLb9mb3/2nmiMsZZfW9547f9DpD4963n25ATOAT8pkA0AAA==
+  </data>
+ </layer>
+</map>

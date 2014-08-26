@@ -1,0 +1,20 @@
+<?xml version = "1.0" ?>
+<Automate ID= "fm_intercepteur" > 
+<Etat Nom= "1" > 
+ <Transition Entree= "VU" Etat= "1" Action = "INTERCEPTER" > </Transition> 
+ <Transition Entree= "PAS_VU" Etat= "2" Action = "DIRECTION_ALEATOIRE" > </Transition> 
+</Etat> 
+<Etat Nom= "2" > 
+ <Transition Entree= "ETOILE" Etat= "1" Action = "AVANCER" > </Transition> 
+</Etat> 
+<Etat_Initial> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etat_Initial> 
+<Etats_Finals> 
+</Etats_Finals> 
+<Etats_Bloquants> 
+<Etat Nom= "1" > 
+</Etat> 
+</Etats_Bloquants> 
+</Automate> 

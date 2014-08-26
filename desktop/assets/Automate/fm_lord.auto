@@ -1,0 +1,33 @@
+Etat 1
+Transition
+    ETATSUIVANT = 2
+    ENTREE = PM_DANS_RAYON_X
+    SORTIE = OBEIR
+    
+Transition
+    ETATSUIVANT = 3
+    ENTREE = NON_PM_DANS_RAYON_X
+    SORTIE = AVANCER
+    
+Etat 2
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = DIRECTION_ALEATOIRE
+    
+Etat 3
+Transition
+	ETATSUIVANT = 3
+    ENTREE = CASE_NON_ATTEINTE
+    SORTIE = AVANCER
+
+Transition
+	ETATSUIVANT = 2
+    ENTREE = CASE_ATTEINTE
+    SORTIE = RIEN
+ 
+        
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1 3 
+AUTOMATE = fm_lord

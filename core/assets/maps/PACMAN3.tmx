@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="28" height="31" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="PACMAN-TERRAIN" tilewidth="32" tileheight="32">
+  <image source="tuiles/PACMAN-TERRAIN.png" width="192" height="124"/>
+ </tileset>
+ <tileset firstgid="19" name="PACMAN-TERRAIN-2" tilewidth="32" tileheight="32">
+  <image source="tuiles/PACMAN-TERRAIN-2.png" width="192" height="96"/>
+ </tileset>
+ <tileset firstgid="37" name="Collision" tilewidth="32" tileheight="32">
+  <image source="tuiles/Collision.png" width="160" height="160"/>
+ </tileset>
+ <tileset firstgid="62" name="pacgomme" tilewidth="32" tileheight="32">
+  <image source="tuiles/pacgomme.png" width="32" height="32"/>
+ </tileset>
+ <layer name="logic" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA92TQQrAMAgE/Uz+/8XeJZVZYw12QChJ3FW0y8yWC9ucqRFpqFTk0VrJt6LR5dcBnbWvLdOfslvT/QjEL6NR1R/VuOVXQUV/mR2b5Of5W39Vfh2oNZPI5Hzt14W6H7tz+va2H+VkFmTm0bspeVHvKlQzs0uT7hRO8+g/pcSbxgMdv7DlkA0AAA==
+  </data>
+ </layer>
+ <layer name="GUM" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+1UQQoAIAjrZf3/WT2g0jmlTBp4yNI5GbU2oy9yVkg9ujEi6pi5X6o7EcgsqA6Px6rxeXbP9ND0MPqkcwY+yy6Rumz6Pt9bfDf/62o4vU/UH6s8+vY2H+uxCH9K2iVkrdO8xHqQ8WeVu6idef3JYtdjANyqqlGQDQAA
+  </data>
+ </layer>
+ <layer name="Background" width="28" height="31">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA7WW6W4DIQyE2VbbbJLmbKQcPXK+/zPWK4FqjcDYxP3xibAb22J2wHQhhBfGO7El5vCc80p0wvtSjjFuEt9ZmDrE9cSbYvSKm0cdauO28FsTV9JlAKy6SXouiCUjrb3PzGt69ZALWRFrIK13CnOtXpgPQV+jl9Ncsz5pD1n3g2Z91v3g9f1Kc14v971QX80+4TGYU6rn5X9tPdTiSOyIG/EducZnJ0E/bT2cb4gDcSd+Ig9iT8yUOaz1xrx49mz+sd5X1I/z2Vgv50c+PxMfBS7KHK19rIUh/J3Xmv7lMY7ndRd0/ctjbL1PPLP/a+cn74sDPJf+Wzs/S97ifSp9c+yVuf96+LNUz6KndJ/I6cXvBAtDXIot9fec1hKaOMmfHndaiz9r3tV40OpPjc9a47w0e8af0r0V4zQ5xrhf26GDB5ANAAA=
+  </data>
+ </layer>
+</map>

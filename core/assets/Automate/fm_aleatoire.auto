@@ -1,0 +1,21 @@
+Etat 1
+Transition
+    ETATSUIVANT = 2
+    ENTREE = NON_PM_DANS_RAYON_X
+    SORTIE = DIRECTION_ALEATOIRE
+    
+Transition
+    ETATSUIVANT = 2
+    ENTREE = PM_DANS_RAYON_X
+    SORTIE = DIRECTION_ALEATOIRE
+    
+Etat 2
+Transition
+    ETATSUIVANT = 1
+    ENTREE = ETOILE
+    SORTIE = AVANCER
+        
+ETAT_INITIAL = 1
+ETAT_FINAL = 
+ETAT_BLOQUANT = 1
+AUTOMATE = fm_aleatoire
