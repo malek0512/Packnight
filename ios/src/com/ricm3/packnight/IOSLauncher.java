@@ -5,13 +5,13 @@ import org.robovm.apple.uikit.UIApplication;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.ricm3.packnight.Jeu;
+import com.ricm3.packnight.view.screen.LauncherScreen;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new Jeu(), config);
+        return new IOSApplication(new LauncherScreen(), config);
     }
 
     public static void main(String[] argv) {
