@@ -1,15 +1,12 @@
 package com.ricm3.packnight.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.ricm3.packnight.model.parser.Quad;
-
 public class TableTransitionSortie {
 	// Classe intermediaire de triplet
-	public class Triplet {
+	static public class Triplet {
 		public String EtatSuiv;
 		public Automate.Sortie Sortie;
 
@@ -25,28 +22,6 @@ public class TableTransitionSortie {
 		table = new HashMap<String, Map<Automate.Entree, Triplet>>();
 	}
 
-	/**
-	 * Initialise la table de transition avec ArrayList de liste chainée
-	 * contenant le type Quad = {int Entree, int EtatSuiv, int Sortie }
-	 * 
-	 * @param TransitionSortie
-	 * @throws Exception 
-	 */
-	public void initTransitionSortie(Map<String, List<Quad>> TransitionSortie) throws Exception {
-		for (Entry<String, List<Quad>> i : TransitionSortie.entrySet()) {
-			table.put(i.getKey(), new HashMap<Automate.Entree, Triplet>());
-			for (Quad q : i.getValue()) {
-				if (!Automate.Entree.contains(q.entree)) 
-					throw new Exception("Erreur a l'initialisation, l'entree " + q.entree + " n'existe pas dans le type enum Entree");
-				if(!Automate.Sortie.contains(q.sortie))
-					throw new Exception("Erreur a l'initialisation, la sortie " + q.sortie + " n'existe pas dans le type enum Sortie");
-				
-				table.get(i.getKey()).put(Automate.Entree.valueOf(q.entree),
-							new Triplet(q.EtatSuiv, Automate.Sortie.valueOf(q.sortie)));
-					
-			}
-		}
-	}
 
 	/**
 	 * Renvoie True, si l'Entree Existe Dans l'Automate donc si l'une des
@@ -111,9 +86,9 @@ public class TableTransitionSortie {
 		for (Entry<String, Map<Automate.Entree, Triplet>> i : table.entrySet()) {
 			res += "ETAT " + i.getKey() + " : ";
 			for (Map.Entry<Automate.Entree, Triplet> e : i.getValue().entrySet()) {
-				res += " [ENTREE " + e.getKey() + " : etatSuiv "
-						+ e.getValue().EtatSuiv + ", SORTIE "
-						+ e.getValue().Sortie + "], ";
+				res += " [ENTREE " + "*" + e.getKey() + "*" + " : etatSuiv "
+						+ "*" + e.getValue().EtatSuiv + "*" + ", SORTIE "
+						+ "*" + e.getValue().Sortie + "*" + "], ";
 			}
 			res += "\n";
 		}

@@ -1,0 +1,173 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.17+ wizard for JavaCC 1.5.0+
+ */
+options
+{
+  JDK_VERSION = "1.5";
+  static = true;
+}
+
+PARSER_BEGIN(EG1)
+package com.ricm3.packnight.model.parser;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import com.ricm3.packnight.controller.Automate;
+import com.ricm3.packnight.controller.TableTransitionSortie.Triplet;
+public class EG1
+{
+  public static void main(String args []) throws ParseException
+  {
+    EG1 parser = new EG1(System.in);
+    while (true)
+    {
+      System.out.println("Reading from standard input...");
+      System.out.print("Enter an automaton :");
+      try
+      {
+		EG1.etat();
+      }
+      catch (Exception e)
+      {
+        System.out.println("NOK.");
+        System.out.println(e.getMessage());
+        EG1.ReInit(System.in);
+      }
+      catch (Error e)
+      {
+        System.out.println("Oops.");
+        System.out.println(e.getMessage());
+        break;
+      }
+    }
+  }
+}
+
+PARSER_END(EG1)
+
+SKIP :
+{
+  " "
+| "\r"
+| "\t"
+| "\n"
+| "="
+}
+
+TOKEN : /* OPERATORS */
+{
+  < ETAT : "Etat" >
+| < TRANSITION : "Transition" >
+| < ETATSUIVANT : "ETATSUIVANT" >
+| < ENTREE : "ENTREE" >
+| < SORTIE : "SORTIE" >
+| < ETAT_INITIAL : "ETAT_INITIAL" >
+| < ETAT_FINAL : "ETAT_FINAL" >
+| < ETAT_BLOQUANT : "ETAT_BLOQUANT" >
+| < AUTOMATE : "AUTOMATE" >
+}
+
+TOKEN :
+{
+  < STRING : < LETTER > (< DIGIT > | < LETTER > | < SYMBOL >)* >
+| < #LETTER : [ "a"-"z" , "A"-"Z" , "0"-"9" ] >
+| < #DIGIT : ["0"-"9" ] >
+| < #SYMBOL : ["_"] >
+}
+
+
+String name() :
+{Token name;}
+{
+  name = < STRING >
+  {
+    return name.image;
+  }
+}
+
+
+String[] transition() :
+{String[] transition =  new String[3];}
+{
+	< TRANSITION >
+   < ETATSUIVANT >  transition[0] = name()
+   < ENTREE > transition[1] = name()
+   < SORTIE > transition[2] = name()
+   {
+     return transition;
+   }
+}
+
+
+Map<String, Object> etat() :
+{
+Map<String, Object> Return = new HashMap<String, Object>();
+Return.put("tableTransitionSortie", null);
+Return.put("etatFinal", null);
+Return.put("etatBloquant", null);
+Return.put("etatInitial", null);
+Return.put("nom", null);
+
+Map<String, Map<Automate.Entree, Triplet>> table = new HashMap<String, Map<Automate.Entree, Triplet>>();
+List<String> eFinal = new LinkedList<String>();
+List<String> eBloquant = new LinkedList<String>();
+List<String> eInitial = new LinkedList<String>();
+String name;
+String n ;
+String[] t ;
+}
+{
+  (
+  	< ETAT > n = name()
+  		{
+		  //Ajoute l'etat
+  		  table.put(n, new HashMap<Automate.Entree, Triplet>());
+		}
+  	(
+		t = transition()
+		{
+//			for(int i=0; i<3; i++){
+////				System.out.println("-----"+t[i]);
+//			}
+			//Ajoute l'ensemble des transition de l'etat dans la table
+			table.get(n).put(Automate.Entree.valueOf(t[1]), new Triplet(t[0], Automate.Sortie.valueOf(t[2])));
+		}
+  	)+
+  )+
+  
+  < ETAT_INITIAL >
+	(
+	  n = name()
+	  {
+	    eInitial.add(n);
+	  }
+	)+
+  < ETAT_FINAL >
+   (
+	  n = name()
+	  {
+	    eFinal.add(n);
+	  }
+	)*
+  < ETAT_BLOQUANT >
+   (
+	  n = name()
+	  {
+	    eBloquant.add(n);
+	  }
+	)*
+  < AUTOMATE > n = name()
+  {
+	Return.put("tableTransitionSortie", table);
+	Return.put("etatFinal", eFinal);
+	Return.put("etatBloquant", eBloquant);
+	Return.put("etatInitial", eInitial);
+	Return.put("nom", n);
+//			for(int i=0; i<eInitial.size(); i++)
+//				System.out.println(name.get(0));
+	return Return;
+  }
+
+}

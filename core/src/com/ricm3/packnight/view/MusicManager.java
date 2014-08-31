@@ -5,7 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 
 public class MusicManager {
 
-	public static boolean mute = false;
+	public static boolean mute = true;
 	
 	static public enum typeSong {
 		accueil		    ("songs/Batman.ogg"),
@@ -32,18 +32,19 @@ public class MusicManager {
 
 	static public void loadSongs() {
 		for(typeSong s : typeSong.values()) {
-			Jeu.assets.load(s.getValue(), Sound.class);
+			if (s.getValue().contains("Bruitage"))
+				Jeu.assets.load(s.getValue(), Sound.class);
 		}	
 	}
 	
-	static public void playLoop(typeSong allbeat) {
+	static public void playLoop(typeSong s) {
 		if(!mute) {
-			if (! Jeu.assets.isLoaded(allbeat.value)) {
-				Jeu.assets.load(allbeat.getValue(), Sound.class);
+			if (! Jeu.assets.isLoaded(s.value)) {
+				Jeu.assets.load(s.getValue(), Sound.class);
 				Jeu.assets.finishLoading();
 			}
 			
-			Jeu.assets.get(allbeat.value, Sound.class).loop();
+			Jeu.assets.get(s.value, Sound.class).loop();
 		}
 	}
 	

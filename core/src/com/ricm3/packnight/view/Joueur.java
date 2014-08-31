@@ -27,11 +27,14 @@ public class Joueur {
 		liste.add(this);
 	}
 
-	public Joueur(String sprite, Personnage p, String automate) {
+	public Joueur(String sprite, Personnage p, String fichierAutomate) {
 		
 		try{
-    		this.auto = new Automate(automate, p);
-    	}catch(Exception e)  { System.out.println(e); }
+    		this.auto = new Automate(fichierAutomate, p);
+    	}catch(Exception e)  { 
+//    		System.out.println(e); 
+    		e.printStackTrace();	
+    	}
 		
 		this.p = p;
 		personnageSprite = new Sprites(sprite);

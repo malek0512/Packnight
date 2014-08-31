@@ -18,6 +18,7 @@ public class Camera {
 	public static Rectangle glViewport;
     private static float rotationSpeed;
     private static CoordPix joueurCamera;
+    public static float initialScale = 1;
 //    private static float xCamera, yCamera;
 //    private static float resolution_x = Jeu.WIDTH, resolution_y = Jeu.HEIGHT;
 //    private static float largeur_map = ((TiledMapTileLayer) Map.map.getLayers().get(Map.wallLayer)).getWidth();

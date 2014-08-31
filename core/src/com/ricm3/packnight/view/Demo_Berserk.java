@@ -20,7 +20,7 @@ public class Demo_Berserk extends Equipage {
 		this.joueurFleche =  PACMAN_1;
 		this.joueurCamera = PACMAN_1;
 		Joueur PM_1 = new Joueur(Sprites.Pacman, PACMAN_1);
-		Joueur FM_1 = new Joueur(Sprites.Berserk, GHOST_1,"fm_berserk.xml");
+		Joueur FM_1 = new Joueur(Sprites.Berserk, GHOST_1,"automate/fm_berserk.auto");
 	}
 
 }

@@ -1,12 +1,14 @@
 package com.ricm3.packnight.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.badlogic.gdx.Gdx;
 import com.ricm3.packnight.controller.TableTransitionSortie.Triplet;
-import com.ricm3.packnight.model.parser.Parser;
-import com.ricm3.packnight.model.parser.Quad;
+import com.ricm3.packnight.model.parser.EG1;
 import com.ricm3.packnight.model.personnages.Ghost;
 import com.ricm3.packnight.model.personnages.Personnage;
 import com.ricm3.packnight.model.structure_terrain.Direction;
@@ -56,7 +58,7 @@ public class Automate {
 		}
 	}	
 	
-	TableTransitionSortie tableTransitionSortie;
+	TableTransitionSortie tableTransitionSortie = new TableTransitionSortie();
 	
 	private String etatCourant;
 	private int nbEtat;
@@ -65,34 +67,69 @@ public class Automate {
 	private int nbTransition;
 //	private int nbTransitionMax;
 	private String etatInitial;
-	private List<String>etatsFinals;
-	private List<String>etatsBloquants;
+	private List<String> etatsFinals;
+	private List<String> etatsBloquants;
 	public Direction sneaky = null;
-	
+	private InputStream fichier = null ;
+	private static boolean isAlreadyInstanciated = false;
 	/*
 	 * Prend un fichier XML et remplie les attributs de l'automate
 	 */
-	public Automate(String fichierXML, Personnage p) throws Exception
+	public Automate(String fichierAutomate, Personnage p) throws Exception
 	{
 		
-		Parser parser = new Parser("assets/Automate/"+fichierXML);
+		Map<String, Object> retour = null;
+
+//		fichier = new FileInputStream(fichierAutomate);
+		fichier = Gdx.files.internal(fichierAutomate).read();
+		if (! isAlreadyInstanciated){
+			EG1 parser = new EG1(fichier);
+			isAlreadyInstanciated = true;
+		} else
+			EG1.ReInit(fichier);
 		
-		Map<String,List<Quad>> liste = parser.parseTableau();
-		etatInitial = parser.parseEtatInitiale();
-		etatsFinals = parser.parseEtatFinal();
-//		System.out.println(etatsFinals);
-		etatsBloquants = parser.parseEtatBloquant();
+	      try
+	      {
+			retour = EG1.etat();
+//			Gdx.app.log("Nom du fichier",(String) retour.get("nom"));
+//			((FileInputStream) fichier).getChannel().position(0);
+//			EG1.ReInit(fichier);
+	      }
+	      catch (Exception e)
+	      {
+	        System.out.println("NOK.");
+	        System.out.println(e.getMessage());
+	        Gdx.app.log("JAVACC Parser","NOK");
+	        Gdx.app.log("JAVACC Parser",e.getMessage());
+	        EG1.ReInit(fichier);
+	      }
+	      catch (Error e)
+	      {
+	        System.out.println("Oops.");
+	        System.out.println(e.getMessage());
+	        Gdx.app.log("JAVACC Parser","Oops");
+	        Gdx.app.log("JAVACC Parser",e.getMessage());
+	      }
+	      
+	      fichier.close();
+	      Gdx.app.log("Automate",tableTransitionSortie.toString());
+	      System.out.println(tableTransitionSortie.toString());
+	      etatInitial = (String) ((List<?>) retour.get("etatInitial")).get(0);
+		etatsFinals = (List<String>) retour.get("etatFinal");
+		etatsBloquants = (List<String>) retour.get("etatBloquant");
+	    tableTransitionSortie.table = (Map<String, Map<Entree, Triplet>>) retour.get("tableTransitionSortie");
+//	    if ( retour.get("etatInitial") instanceof List<?>)
+	    	
+
+
 		//Initialisations des attributs
-		this.nbEtat  = liste.size();
+		this.nbEtat  = tableTransitionSortie.table.size();
 //		this.nbTransition = 0;
 //		this.nbTransitionMax = Integer.MAX_VALUE; //A Virer
 		this.personnage = p;
 		this.etatCourant = etatInitial;
 		
-		
-		//Initialisation des la table d'entree sortie
-		tableTransitionSortie = new TableTransitionSortie();
-		tableTransitionSortie.initTransitionSortie(liste);
+		Gdx.app.log("Automate",tableTransitionSortie.toString());
 		System.out.println(tableTransitionSortie.toString());
 	}
 	

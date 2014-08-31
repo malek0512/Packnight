@@ -87,12 +87,13 @@ public class GagnerScreen implements Screen {
 		table = new Table();
 		table.setBackground(fond.getDrawable());
 		table .setFillParent(true);
+		stage.addActor(table);
 		
 //		table.debug();
 //		table.debugTable();
 		
 		
-		stage.addActor(table);
+
 		
 		// Chargement du Skin des boutons
 		TextureAtlas buttonsAtlas = new TextureAtlas(LauncherScreen.buttons); // ** charge l'image creer avec GDX TEXTURE PACKER **//

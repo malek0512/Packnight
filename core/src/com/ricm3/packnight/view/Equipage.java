@@ -11,11 +11,11 @@ public abstract class Equipage {
 
 	public static HashMap<String, String[]> automate = new LinkedHashMap<String, String[]>() {
 		{put("None", null);}
-		{put("Berserk", 	new String[] {"fm_berserk.xml", 	Sprites.Berserk});}
-		{put("Aleatoire", 	new String[] {"fm_aleatoire.xml", 	Sprites.Aleatoire});}
-		{put("Intercepteur",new String[] {"fm_intersepteur.xml",Sprites.Intercepteur});}
-		{put("Spectrum", 	new String[] {"fm_lord.xml", 		Sprites.Spectrum});}
-		{put("Suiveur", 	new String[] {"fm_suiveur.xml", 	Sprites.Suiveur});}
+		{put("Berserk", 	new String[] {"automate/fm_berserk.auto", 	Sprites.Berserk});}
+		{put("Aleatoire", 	new String[] {"automate/fm_aleatoire.auto", 	Sprites.Aleatoire});}
+		{put("Intercepteur",new String[] {"automate/fm_intersepteur.auto",Sprites.Intercepteur});}
+		{put("Spectrum", 	new String[] {"automate/fm_lord.auto", 		Sprites.Spectrum});}
+		{put("Suiveur", 	new String[] {"automate/fm_suiveur.auto", 	Sprites.Suiveur});}
 	};
 	
 	public static Personnage joueurCamera;

@@ -25,6 +25,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
+import com.ricm3.packnight.controller.Automate;
 
 public class GestureDetectorTest implements ApplicationListener {
 	Texture texture;
@@ -32,7 +33,8 @@ public class GestureDetectorTest implements ApplicationListener {
 	OrthographicCamera camera;
 	CameraController controller;
 	GestureDetector gestureDetector;
-
+	Automate auto ;
+	
 	class CameraController implements GestureListener {
 		float velX, velY;
 		boolean flinging = false;
@@ -104,7 +106,7 @@ public class GestureDetectorTest implements ApplicationListener {
 
 	@Override
 	public void create () {
-		texture = new Texture("assets/pictures/full.png");
+		texture = new Texture(Gdx.files.internal("pictures/full.png"));
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		controller = new CameraController();

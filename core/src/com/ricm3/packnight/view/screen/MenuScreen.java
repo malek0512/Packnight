@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.MyScrolling;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.ricm3.packnight.model.personnages.Ghost;
@@ -43,9 +44,12 @@ public class MenuScreen implements Screen {
 	MyScrolling auto2;
 	MyScrolling auto3;
 	MyScrolling auto4;
+	private Table table;
+	private int WIDTH, HEIGHT;
 	
 	@Override
 	public void render(float delta) {
+		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
 		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw(); 
@@ -60,15 +64,25 @@ public class MenuScreen implements Screen {
 	@Override
 	public void show() {
 //		MusicManager.play(typeSong.selection); // Musiques
-
+		Gdx.gl20.glViewport(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		WIDTH = Gdx.graphics.getWidth();
+		HEIGHT = Gdx.graphics.getHeight();
+		
 		stage = new Stage(); // Contiens l'ensemble des boutons : multiplexeur des inputs
 		Gdx.input.setInputProcessor(stage); // ** stage is responsive **//
 
 		// Chargement de l'image de fond
 		final Image fond = new Image(new Texture(Gdx.files.internal(LauncherScreen.selectionPersonnage)));
-		fond.setCenterPosition(Jeu.WIDTH / 2, Jeu.HEIGHT / 2);
-		stage.addActor(fond);
+//		fond.setCenterPosition(WIDTH / 2, HEIGHT / 2);
+//		fond.setFillParent(true);
+//		stage.addActor(fond);
 
+		table = new Table();
+		table.setBackground(fond.getDrawable());
+		table .setFillParent(true);
+		stage.addActor(table);
+		
 		// Chargement du Skin des boutons
 		TextureAtlas buttonsAtlas = new TextureAtlas(LauncherScreen.buttons); // ** charge l'image creer avec GDX TEXTURE PACKER **//
 		Skin buttonSkin = new Skin();
@@ -85,28 +99,28 @@ public class MenuScreen implements Screen {
 		
 		//Dessiner les choix d'automate
 		auto1 = new MyScrolling(listeAutomates, 
-				Jeu.WIDTH / 2 + fond.getWidth()/4, Jeu.HEIGHT / 2 + fond.getHeight()/4, 100, 25, "Player 1");
+				WIDTH / 2 + fond.getWidth()/4, HEIGHT / 2 + fond.getHeight()/4, 100, 25, "Player 1");
 		auto1.addToStage(stage);
 		fantomes.add(auto1);
 		
 		auto2 = new MyScrolling(listeAutomates, 
-				Jeu.WIDTH / 2 + fond.getWidth()/4, Jeu.HEIGHT / 2 + fond.getHeight()/8, 100, 25, "Player 2");
+				WIDTH / 2 + fond.getWidth()/4, HEIGHT / 2 + fond.getHeight()/8, 100, 25, "Player 2");
 		auto2.addToStage(stage);
 		fantomes.add(auto2);
 		
 		auto3 = new MyScrolling(listeAutomates, 
-				Jeu.WIDTH / 2 + fond.getWidth()/4, Jeu.HEIGHT / 2 - fond.getHeight()/8, 100, 25, "Player 3");
+				WIDTH / 2 + fond.getWidth()/4, HEIGHT / 2 - fond.getHeight()/8, 100, 25, "Player 3");
 		auto3.addToStage(stage);
 		fantomes.add(auto3);
 		
 		auto4 = new MyScrolling(listeAutomates, 
-				Jeu.WIDTH / 2 + fond.getWidth()/4, Jeu.HEIGHT / 2 - fond.getHeight()/4, 100, 25, "Player 4");
+				WIDTH / 2 + fond.getWidth()/4, HEIGHT / 2 - fond.getHeight()/4, 100, 25, "Player 4");
 		auto4.addToStage(stage);
 		fantomes.add(auto4);
 		
 		//Dessiner bouton Suivant
 		TextButton suivant = new TextButton("Suivant", style);
-		suivant.setBounds(Jeu.WIDTH - 150, 50, 100, 50);
+		suivant.setBounds(WIDTH - 150, 50, 100, 50);
 		suivant.addListener(new InputListener(){
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				return true;
@@ -138,7 +152,7 @@ public class MenuScreen implements Screen {
 				
 		//Chargment du choix des Maps
 		final Image map1 = new Image(new Texture(Gdx.files.internal(LauncherScreen.map1)));
-		map1.setCenterPosition(Jeu.WIDTH / 2 - fond.getWidth()/4, Jeu.HEIGHT / 2 + fond.getHeight()/4);
+		map1.setCenterPosition(WIDTH / 2 - fond.getWidth()/4, HEIGHT / 2 + fond.getHeight()/4);
 		map1.addCaptureListener(new InputListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 					Map.setMap(Map.map1);
@@ -156,7 +170,7 @@ public class MenuScreen implements Screen {
 
 		
 		final Image map2 = new Image(new Texture(Gdx.files.internal(LauncherScreen.map2)));
-		map2.setCenterPosition(Jeu.WIDTH / 2 - fond.getWidth()/4, Jeu.HEIGHT / 2 - fond.getHeight()/4);
+		map2.setCenterPosition(WIDTH / 2 - fond.getWidth()/4, HEIGHT / 2 - fond.getHeight()/4);
 		map2.addCaptureListener(new InputListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				Map.setMap(Map.map2);
@@ -172,7 +186,7 @@ public class MenuScreen implements Screen {
 		
 		stage.addActor(map2);
 		
-		
+
 	}
 
 	@Override
@@ -205,7 +219,7 @@ public class MenuScreen implements Screen {
 			
 			public void create() {
 				Ghost.vision = 100;
-				PacKnight.vie = 1;
+//				PacKnight.vie = 1;
 				PacKnight PACMAN_1 = new PacKnight("J1",17,17,Direction.droite, true);
 				Joueur.liste.clear();
 				new Joueur(Sprites.Pacman, PACMAN_1);

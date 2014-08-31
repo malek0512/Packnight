@@ -119,26 +119,37 @@ public class InputHandler implements InputProcessor, GestureListener {
     }
 
 	public boolean pan(float x, float y, float deltaX, float deltaY) {
-		int taux = 6;
-	if (deltaX > taux) {
-		Equipage.joueurFleche.setNextDirection(Direction.droite);
-		Equipage.joueurCamera.setNextDirection(Direction.droite);
-	} else if (deltaX < -taux) {
-		Equipage.joueurFleche.setNextDirection(Direction.gauche);
-		Equipage.joueurCamera.setNextDirection(Direction.gauche);
-	} else if (deltaY > -taux) {
-		Equipage.joueurFleche.setNextDirection(Direction.haut);
-		Equipage.joueurCamera.setNextDirection(Direction.haut);
-	} else if (deltaY < taux) {
-		Equipage.joueurFleche.setNextDirection(Direction.bas);
-		Equipage.joueurCamera.setNextDirection(Direction.bas);
-	}
+		float delta = 6;
+		float max = (Math.abs(deltaX) > Math.abs(deltaY))? deltaX : deltaY;
+		if ( Math.abs(max) > delta) {
+			if(max == deltaY) {
+				if (deltaY > 0) {
+					Equipage.joueurFleche.setNextDirection(Direction.haut);
+					Equipage.joueurCamera.setNextDirection(Direction.haut);
+				} else {
+					Equipage.joueurFleche.setNextDirection(Direction.bas);
+					Equipage.joueurCamera.setNextDirection(Direction.bas);
+				}
+			}
+			
+			if(max == deltaX) {
+				if (deltaX < 0) {
+					Equipage.joueurFleche.setNextDirection(Direction.gauche);
+					Equipage.joueurCamera.setNextDirection(Direction.gauche);
+				} else {
+					Equipage.joueurFleche.setNextDirection(Direction.droite);
+					Equipage.joueurCamera.setNextDirection(Direction.droite);
+				}
+			}
+		}
 	return true;
 }
 
     @Override
-    public boolean zoom(float initialDistance, float distance) {
-        return false;
+    public boolean zoom(float originalDistance, float currentDistance) {
+		float ratio = originalDistance / currentDistance;
+		Camera.camera.zoom = Camera.initialScale * ratio;
+        return true;
     }
 
     @Override
@@ -152,7 +163,4 @@ public class InputHandler implements InputProcessor, GestureListener {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
-
 }
