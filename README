@@ -1,0 +1,13 @@
+Requirements
+* Eclipse Java EE
+* Gradle : (http://www.vogella.com/tutorials/EclipseGradle/article.html#installation-via-the-marketplace)
+Help > Install New Software 
+Add url : http://download.eclipse.org/releases/neon
+Look for :  Gradle
+
+* install android sdk : (http://www.android-dev.fr/integration-du-sdk-android-dans-eclipse#.V6J0heiLTIV)
+Help > Install New Software
+Add url : https://dl-ssl.google.com/android/eclipse/
+Look for <install everything>
+
+** install API 19 and tools 

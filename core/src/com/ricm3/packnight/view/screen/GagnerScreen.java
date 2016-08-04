@@ -13,7 +13,7 @@ import com.ricm3.packnight.model.personnages.Ghost;
 import com.ricm3.packnight.model.personnages.PacKnight;
 import com.ricm3.packnight.model.structure_terrain.Direction;
 
-import sun.awt.image.PixelConverter;
+//import sun.awt.image.PixelConverter;
 import com.ricm3.packnight.view.Equipage;
 import com.ricm3.packnight.view.Jeu;
 import com.ricm3.packnight.view.Joueur;
@@ -54,7 +54,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.sun.org.apache.regexp.internal.recompile;
+//import com.sun.org.apache.regexp.internal.recompile;
 
 public class GagnerScreen implements Screen {
 
